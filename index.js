@@ -9,12 +9,16 @@ for (let i = 0; i < buttonlength; i++) {
 
         makeSound(buttonName);
 
+        BtnAnimation(buttonName);
+
     }
 }
 
 document.addEventListener("keydown", function (event) {
     makeSound(event.key)
+    BtnAnimation(event.key)
 })
+
 
 function makeSound(key) {
     switch (key) {
@@ -50,4 +54,16 @@ function makeSound(key) {
         default: console.log(buttonName);
             break;
     }
+}
+
+function BtnAnimation(currentKey) {
+
+    let activeBtn = document.querySelector("." + currentKey);
+
+    activeBtn.classList.add("pressed");
+
+    setTimeout(function () {
+        activeBtn.classList.remove("pressed");
+    }, 100);
+
 }
